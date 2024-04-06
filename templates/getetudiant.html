@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+    <div class="text-center">
+        <h1 class="text-danger">AJOUTER APPRENANT AVEC MATRICULE</h1>
+    </div><br>
+    <div class="col-md-8 offset-2">
+        <form action="{% url 'etu' %}">
+            <label for="">Matricule :</label>
+            <input type="number" class="form-control" name="matricule" required>
+            <label for="">Ancien classe:</label>
+            <select name="classeA" id="" required class="form-control">
+                <option>-----------------------------------------</option>
+                {% for i in az %}                 
+                  {% for a in i %}
+                    <option value="{{a.classe}}">{{a.classe}}</option>
+                  {% endfor %}                  
+                {% endfor %}                   
+            </select>
+            <!-- <input type="text" class="form-control" name="classeA" required> -->
+
+            <label for="">Nouveau classe:</label>
+            <select name="classe" id="" class="form-control">
+                <option >-----------------------------------------</option>
+                
+                {% for x in aa %}
+                   <option value="{{x.codeC}}">{{x.classe}}</option> 
+                {% endfor %}
+                    
+            </select>
+        
+
+            <br>
+            <div class="text-center">
+                <button type="submit" class="btn btn-info">Suivant</button>
+            </div>
+        </form>
+    </div>
+{% endblock content %}
+    

@@ -1,0 +1,45 @@
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Est consequatur vero adipisci! Vitae consequuntur, debitis odio hic totam, dignissimos adipisci ipsum ab consequatur animi sit. Quo velit impedit in doloribus? Neque reiciendis autem assumenda quaerat obcaecati! Ad tempora rerum odio, necessitatibus facere doloribus sint. Dolore cupiditate minima illum laboriosam porro sunt fugiat deserunt veritatis adipisci velit laborum, nostrum, error, rerum ipsam est facilis dolorum odio modi optio excepturi? Laboriosam, iste nisi! Autem illum similique beatae perspiciatis, mollitia provident atque exercitationem quos aspernatur iusto! Quaerat voluptas inventore earum dignissimos modi, expedita eveniet quo necessitatibus est nisi, blanditiis illum beatae exercitationem consequuntur.
+{% extends 'base.html' %} {% block content %}
+<div class="text-center">
+    <h1 class="text-danger">{{titre}}</h1>
+</div>
+<br> {% include 'message.html' %}
+<form action="" method="POST">
+    {% csrf_token %}
+    <label for="">Apprenant :</label>
+    <select id="" class="form-control" name="etudiant">
+        <option>---------------------------</option>
+        {% for i in etudiants %}
+        <option value="{{i.id}}">{{i.numero}}-{{i.nom}} {{i.prenom}}</option>
+        {% endfor %}
+    </select>
+    <label for="">Nombre d'Abscence :</label>
+    <input type="number" class="form-control" name="nb-abs">
+    <br>
+    <div class="text-center">
+        <button type="submit" class="btn btn-info">Enregistrer</button>
+    </div>
+</form>
+<br>
+<table class="table table-bordered">
+    <tr>
+        <th>Numero</th>
+        <th>Nom et Prenoms</th>
+        <th>Nombres heures d'absence</th>
+        <th>Action</th>
+    </tr>
+
+    {% if tabl %} {% for i in tabl %}
+    <tr>
+        <td>{{i.etudiant.numero}}</td>
+        <td>{{i.etudiant.nom}} {{i.etudiant.prenom}}</td>
+        <td>{{i.nb_abscence}} heures</td>
+        <td><a href="{% url 'modifass' i.id clas i.periode_id %}" class="btn btn-info">Modifier</a></td>
+    </tr>
+    {% endfor %} {% endif %}
+</table>
+{% if tabl %} {% else %}
+<div class="text-center">
+    <span class="text-danger">Aucun Enregistrement</span>
+</div>
+{% endif %} {% endblock content %}

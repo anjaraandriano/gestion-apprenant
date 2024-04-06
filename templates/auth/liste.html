@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="col-sm-12">
+    <div class="text-center">
+        <h1 class="text-danger"> UTILISATEURS </h1>
+    </div>
+    {% include 'message.html' %}
+    <br><br>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card-body">
+
+                <a href="{% url 'inscire' %}" class="btn btn-primary">Ajouter nouveau <i class="fa fa-plus"></i></a>
+
+            </div>
+        </div>
+        <form action="" class="col-md-6">
+            <div class="card-body row  ">
+                <div class="col">
+                    <input type="serch" class="form-control form-control-borderless" name="serch">
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary"> <i class="fa fa-search"></i></button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="row">
+        {% for x in utilisateurs %}
+        <div class="col-md-4 p-2">
+            <div class="contact_blog">
+                <h4 class="brief">
+                    {% if x.is_staff == True %}
+                       Admin
+                    {% else %}
+                       Enseignant
+                    {% endif %}
+                </h4>
+                <div class="contact_inner">
+                    <div class="left">
+                        <h3>{{x.username}}</h3>
+                        <p><strong>Nom et Prenoms: </strong>{{x.last_name}} {{x.first_name}}</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fa fa-envelope-o"></i> : {{x.email}}</li>
+                            <li><i class="fa fa-phone"></i> : {{x.telephone}}</li>
+                        </ul>
+                    </div>
+                    <div class="right">
+                        <div class="profile_contacts">
+                            <img class="img-responsive" src="{{x.profile.url}}" alt="#">
+                        </div>
+                    </div>
+                    <div class="bottom_list">
+                        
+                        <div class="right_button">
+                            <!-- <a  class="btn btn-success btn-xs" href="{% url 'profile' %}"> <i class="fa fa-user">
+                            </i> <i class="fa fa-eye"></i> Voir
+                        </a> -->
+                            <a type="button" class="btn btn-primary btn-xs" href="{% url 'modifprofile' x.id %}">
+                                <i class="fa fa-edit"> </i> Modifier le profile
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+   
+</div>
+{% endblock content %}

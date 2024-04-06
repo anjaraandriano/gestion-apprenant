@@ -1,0 +1,180 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BULLETIN ANNUELLE</title>
+</head>
+
+<body>
+    <table class="table table-bordered">
+        <tr>
+            <td></td>
+            <td>ANNEE DE FORMATION :
+                {{annee}}
+            </td>
+            <td></td>
+        </tr>
+        <br><br>
+        <tr>
+            <th>
+                <div style="border: 1px solid;">BULLETIN SCOLAIRE</div>
+            </th>
+            <th></th>
+            <th>
+                <div style="border: 1px solid;">RESULTATS ANNUELLE</div>
+            </th>
+        </tr>
+    </table>
+    <br><br>
+    <div style="margin-left: 200px;">LYCEE TECHNIQUE PROFESSIONNEL DU GENIE CIVIL MAHAMASINA</div>
+    <div style="margin-left: 250px;">
+        {% for x in typef %}
+        {{x.type_formation|upper}}
+        {% endfor %}
+        <hr>
+    </div>
+    <table>
+        {% for x in classe %}
+        <tr>
+            <td>TYPE FORMATION : {{x.type_formation_id}}</td>
+            <td></td>
+            <td>SECTEUR : {{x.filiere.secteur|upper}}</td>
+        </tr>
+        <tr></tr>
+        <tr>
+            <td>NIVEAU : {{x.classe}}</td>
+            <td></td>
+            <td>FILIERE : {{x.filiere|upper}}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+    <hr>
+
+    <table>
+        {% for x in appr %}
+        <tr>
+            <td>NOM : {{x.nom}}</td>
+            <td></td>
+            <td>PRENOMS : {{x.prenom}}</td>
+        </tr>
+        <tr>
+            <td>MATRICULE : {{x.matricule}}</td>
+            <td></td>
+            <td>NUMERO : {{x.numero}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <hr>
+    <br>
+    <table style="border: 1px solid black; padding: 5px;">
+
+        {% for x in moys %}
+        <tr>
+            <th>MOYENNE {{x.1}}</th>
+            <td>{{x.0|floatformat:2}}</td>
+            <td>SUR 20</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br><br>
+    <table style="border: 1px solid black;padding: 5px;">
+        <tr>
+            <th>MOYENNE GENERALLE ANNUELLE</th>
+            <td>{{nbs|floatformat:2}}</td>
+            <td>SUR 20</td>
+        </tr>
+        <tr>
+            <th>RANG</th>
+            <td>__</td>
+            <td>SUR {{etu_count}} APPRENANTS</td>
+        </tr>
+        <tr>
+            <th>ASSIDUITE</th>
+            <td>{{absence}}</td>
+            <td>HEURE D'ABSENCE</td>
+        </tr>
+    </table>
+    <br><br>
+    <table style="border: 1px solid black; padding: 5px;">
+        <tr>
+            <th>ADMIS(E) EN CLASSE SUPERIEUR</th>
+            <td> </td>
+        </tr>
+        <tr>
+            <th>AUTORISE(E) EN REDOUBLE</th>
+            <td> </td>
+        </tr>
+        <tr>
+            <th>ABONDON AU COURS DE L'ANNEE</th>
+            <td> </td>
+        </tr>
+        <tr>
+            <th>REMIS(E) EN FAMILLE</th>
+            <td> </td>
+        </tr>
+    </table>
+    <br><br>
+    <table>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>Fait à Antananarivo,le_____________________</td>
+        </tr>
+    </table>
+    <table>
+        
+        <tr></tr>
+        <tr>
+            <td>Le Formateur Responsable</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>La Surveillante Générale</td>
+        </tr>
+        <tr></tr>
+        <tr></tr>
+        <tr></tr>
+        <tr></tr>
+        <tr></tr>
+        <tr>
+            <td> {% for x in classe %}
+                {{x.responsable}}
+                {% endfor %}
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+            {{sg}}
+                </td>
+        </tr>
+        <tr></tr>
+        <tr>
+            <td>Le Chef de Travaux</td>
+            <td></td>
+            <td> le Censeur</td>
+            <td></td>
+            <td>Le Proviseur</td>
+        </tr>
+        <tr></tr>
+        <tr></tr>
+        <tr></tr>
+        <tr></tr>
+        <tr></tr>
+        <tr>
+            <td>{{ct}}</td>
+            <td></td>
+            <td>{{censeur}}</td>
+            <td></td>
+            <td>
+            {{prov}}
+                </td>
+        </tr>
+    </table>
+</body>
+
+</html>

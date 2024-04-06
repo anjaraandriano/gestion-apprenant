@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="text-center">
+    <h1 class="text-danger">{{titre}}</h1>
+</div>
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-md-6">
+            <label for="">Nom :</label>
+    {{form.nom}}
+    <label for="">Date de naissance : </label>
+    {{form.date_de_naissance}}
+    <div class="row">
+        <div class="col-md-6">
+            <label for="">Sexe : </label>
+            {{form.sexe}}</div>
+            <div class="col-md-6">
+                <label for="">Photo : </label>
+                {{form.image}}
+            </div>
+    </div>
+    <label for="">Telephone :</label>
+    {{form.telephone}}
+    <label for="">Adresse :</label>
+    {{form.adresse}}
+    <label for="">Père :</label>
+    {{form.nom_du_pere}}
+    <label for="">Profession du père : </label>
+    {{form.profession_pere}}
+    <label for="">Nom Correspondant :</label>
+    {{form.nom_du_correspondant}}
+    <label for="">Profession du Correspondant :</label>
+    {{form.profession_correspondant}}
+    <div class="row">
+        <div class="col-md-4">
+            <label for="">Nombre de frère :</label>
+            {{form.nombre_de_frere}}
+        </div>
+        <div class="col-md-4">
+            <label for="">Nombre de soeur :</label>
+            {{form.nombre_de_soeur}}
+        </div>
+        <div class="col-md-4">
+            <label for="">Rang dans la famille :</label>
+            {{form.rang_dans_la_famille}}
+        </div>
+    </div>
+        </div>
+        <div class="col-md-6">
+            <label for="">Prenoms :</label>
+    {{form.prenom}}
+    <label for="">Lieu de naissance : </label>
+    {{form.lieu_de_naissance}}
+    <label for="">Position :</label>
+    {{form.position}}
+    <label for="">E-mail : </label>
+    {{form.email}}
+    <label for="">Ecole d'origine : </label>
+    {{form.ecole_origine}}
+    <label for="">Nom de la mère : </label>
+    {{form.nom_de_la_mere}}
+    <label for="">Profession du Mère :</label>
+    {{form.profession_mere}}
+    <label for="">Adresse des parents</label>
+    {{form.adresse_des_parents}}
+    <label for="">Adresse du Correspondant :</label>
+    {{form.adresse_des_correspondant}}
+    <div class="row">
+        <div class="col-md-6">
+    <label for="">Sport Préféré :</label>
+    {{form.sport_preferer}}
+        </div>
+        <div class="col-md-6">
+            <label for="">Sport Pratiqué :</label>
+            {{form.sport_pratique}}
+        </div>
+    </div>
+        </div>
+    </div>
+    <br>
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary">Enregistrer</button>
+    </div>
+</form>
+
+    {% endblock content %}

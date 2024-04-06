@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="row">
+    <div class="col-md-3">
+
+    </div>
+    <div class="col-md-6">
+        <div class="text-center">
+            <h1 class="text-danger">AFFICHER BULLETIN</h1>
+        </div>
+        <br><br><br><br><br>
+        <form action="{% url 'bulle' %}">
+            <label for="">Classe :</label>
+            <select name="classe" class="form-control">
+                <option>---------------------------</option>
+                {% for i in classe %}
+                <option value="{{i.codeC}}">{{i.classe}}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <div class="text-center">
+                <button class="btn btn-info" type="submit">Suivant</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-3">
+
+    </div>
+</div>
+{% endblock content %}
